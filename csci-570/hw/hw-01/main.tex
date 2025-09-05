@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+\usepackage{amsthm}
+\usepackage{amssymb}
+% \usepackage{mathtools}
+
+\newcommand{\numpy}{{\tt numpy}}    % tt font for numpy
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\begin{document}
+
+\author{Chunho Lin\\3226964170}
+\title{CSCI-570 Homework 1}
+\maketitle
+
+\medskip
+
+\begin{enumerate}
+
+\item
+Problem 1. [Think through]
+
+As presented in the lecture, the Gale-Shapley algorithm requires that the preference orders of all men and women do not have any ties. How could we adapt the algorithm for the scenario where ties are allowed?
+
+[As an example of a tie, imagine that there are 5 men and 5 women, and m2's preference order is w4, w1, w2 tied with w3, w5. Thus, if m2 cannot be married to neither w4 nor w1, but can do "better" than w5, he is indifferent whether he is married to w2 or w3.]
+
+\begin{proof}[\textbf{Solution.}]
+
+
+% ========== Just examples, please delete before submitting
+Use inline equations for simple math $1+1=2$, and centered equations for more involved or important equations
+\begin{equation}
+    a^2 + b^2 = c^2.
+\end{equation}
+
+Some people like to write scalars without boldface $x+y=1$ and vectors or matrices in boldface
+\begin{equation}
+    \mathbf{A} \mathbf{x} = \mathbf{b}.
+\end{equation}
+
+An example of a matrix \LaTeX:
+\begin{equation}
+    \mathbf{A} = \left(
+    \begin{array}{ccc}
+    3 & -1 & 2 \\ 	
+    0 & 1 & 2 \\ 
+    1 & 0 & -1 \\
+\end{array} 
+\right).  
+\end{equation}
+
+With a labeled equation such as the following:
+\begin{equation}
+    \label{accel}
+    \frac{d^2 x}{d t^2} = a
+\end{equation}
+you can referrer to the equation later. In equation \ref{accel} we defined acceleration.
+
+\end{proof}
+
+\item
+\textbf{Problem 2.}
+
+Prove by induction that \(n^3 + 2n\) is divisible by \(3\) for all natural numbers. Indicate the structure of your proof clearly.
+
+\begin{proof}[\textbf{Solution.}]
+\end{proof}
+
+\item
+Problem 3.
+
+Prove by induction that \(\displaystyle\sum_{i=0}^{n} 2^i = 2^{n+1} - 1\) holds for all natural numbers. Indicate the structure of your proof clearly.
+
+For example, for \(n=3\) the above formula gives
+
+\[
+\sum_{i=0}^{3} 2^i = 2^0 + 2^1 + 2^2 + 2^3 = 1 + 2 + 4 + 8 = 15 = 16 - 1 = 2^4 - 1.
+\]
+
+\begin{proof}[\textbf{Solution.}]
+\end{proof}
+
+\item
+\textbf{Problem 4.}
+
+Suppose \(x_1, x_2, x_3, x_4 \in \mathbb{R}\), \(x_1 + x_2 = x_3 + x_4 = 1\), and \(x_1x_3 + x_2x_4 >1\). Use proof by contradiction to show that at least one of \(x_1, x_2, x_3, x_4\) is negative.
+
+[Hint: What do you know about the product \((x_1 + x_2)\cdot(x_3 + x_4)\)?]
+
+\begin{proof}[\textbf{Solution.}]
+\end{proof}
+
+\item
+\textbf{Problem 5.}
+
+Order the following functions from smallest asymptotic running time to greatest. Additionally, identify all pairs of functions \(f_i\) and \(f_j\) where \(f_i(n) = \Theta(f_j (n))\), or explicitly state that none exist. Explain your answers.
+
+\begin{enumerate}
+\item \(f_a(n) = n!\)
+\item \(f_b(n) = \sqrt{\log{n^{20}}}\)
+\item \(f_c(n) = 2^{n^{3}}\)
+\item \(f_d(n) = n \cdot \frac{\ln n}{\ln 2}\)
+\item \(f_e(n) = n(\log{n})^{20}\)
+\item \(f_f(n) = n^{\log{n}}\)
+\item \(f_g(n) = log{\sqrt{n^{20}}}\)
+\item \(f_h(n) = \floor{\pi e}!\)
+\item \(f_i(n) = \Pi^{n}_{i=1} \frac{i+1}{i}\)
+\item \(f_j(n) = \frac{n}{f_h(n)}\)
+\end{enumerate}
+
+\begin{proof}[\textbf{Solution.}]
+\end{proof}
+
+\item
+\textbf{Problem 6.}
+
+\(f(n) \in O(s(n))\), and \(g(n) \in O(r(n))\). Prove or disprove (by giving a counter-example) the following claims:
+
+\begin{enumerate}
+\item if \(g(n) \in O(f(n))\), then \(f(n) + g(n) \in O(s(n))\)
+\item if \( r(n) \in O(s(n))\), then \(g(n) \in O(f(n))\)
+\item \((\frac{f(n)}{g(n)}) \in O(\frac{s(n)}{r(n)})\)
+\end{enumerate}
+
+\begin{proof}[\textbf{Solution.}]
+\end{proof}
+
+\item
+\textbf{Problem 7.}
+
+Consider a binary counter where the cost of flipping the \(kth\) bit is \(k + 1\) units. That is, flipping the lowest order bit costs \(1\) unit \((0+1)\), the next bit costs \(2\) units \((1+1)\), the next bit costs \(3\) units \((2+1)\), and so on. Use the aggregate method to calculate the amortized cost (via a sequence of \(n\) increments starting from \(0\)) of incrementing the counter!
+
+\begin{proof}[\textbf{Solution.}]
+\end{proof}
+
+\item
+\textbf{Problem 8. [Think through]}
+
+Provide a list of all non-negative numbers whose value is the same both as a binary and as a decimal number. That is, all numbers n for which \(n_2 = n_10\). Provide a proof that you listed all of them.
+
+For example, 101 does not fit the above description, as \(101_{2} = 5_{10} \neq 101_{10}\). Also, numbers like 213 are not valid numbers.
+
+\begin{proof}[\textbf{Solution.}]
+\end{proof}
+
+
+\end{enumerate}
+
+\end{document}
+\grid
+\grid

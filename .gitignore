@@ -1,0 +1,15 @@
+*.aux
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.toc
+
+.DS_Store
+
+# Java
+*.class
+*.jar
