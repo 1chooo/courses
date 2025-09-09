@@ -8,6 +8,8 @@
 *.run.xml
 *.toc
 
+*.synctex.gz
+
 .DS_Store
 
 # Java

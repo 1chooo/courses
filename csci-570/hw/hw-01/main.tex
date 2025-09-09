@@ -7,7 +7,8 @@
 \textwidth 7in
 
 \usepackage{amsthm}
-\usepackage{amssymb}
+\usepackage{amssymb, amsmath}
+
 % \usepackage{mathtools}
 
 \newcommand{\numpy}{{\tt numpy}}    % tt font for numpy
@@ -20,7 +21,7 @@
 
 \begin{document}
 
-\author{Chunho Lin\\3226964170}
+\author{Chunho Lin, 3226964170}
 \title{CSCI-570 Homework 1}
 \maketitle
 
@@ -29,43 +30,37 @@
 \begin{enumerate}
 
 \item
-Problem 1. [Think through]
+\textbf{Problem 1. [Think through]}
 
 As presented in the lecture, the Gale-Shapley algorithm requires that the preference orders of all men and women do not have any ties. How could we adapt the algorithm for the scenario where ties are allowed?
 
-[As an example of a tie, imagine that there are 5 men and 5 women, and m2's preference order is w4, w1, w2 tied with w3, w5. Thus, if m2 cannot be married to neither w4 nor w1, but can do "better" than w5, he is indifferent whether he is married to w2 or w3.]
+[As an example of a tie, imagine that there are 5 men and 5 women, and $m_2$'s preference order is $w_4$, $w_1$, $w_2$ tied with $w_3$, $w_5$. Thus, if $m_2$ cannot be married to neither $w_4$ nor $w_1$, but can do "better" than $w_5$, he is indifferent whether he is married to $w_2$ or $w_3$.]
 
-\begin{proof}[\textbf{Solution.}]
+\begin{proof}[Think.]
 
+As we know, the Gale-Shapley algorithm works with the preference orders without the ties.
 
-% ========== Just examples, please delete before submitting
-Use inline equations for simple math $1+1=2$, and centered equations for more involved or important equations
-\begin{equation}
-    a^2 + b^2 = c^2.
-\end{equation}
+Once we would like to add the ties in the preference orders. What we need to do is to break the ties arbitrarily. Literally, we can randomly assign the order of the tied candidates.
 
-Some people like to write scalars without boldface $x+y=1$ and vectors or matrices in boldface
-\begin{equation}
-    \mathbf{A} \mathbf{x} = \mathbf{b}.
-\end{equation}
+For example, if
 
-An example of a matrix \LaTeX:
-\begin{equation}
-    \mathbf{A} = \left(
-    \begin{array}{ccc}
-    3 & -1 & 2 \\ 	
-    0 & 1 & 2 \\ 
-    1 & 0 & -1 \\
-\end{array} 
-\right).  
-\end{equation}
+$$
+{m_2} : w_4 > w_1 > \{w_2, w_3\} > w_5,
+$$
 
-With a labeled equation such as the following:
-\begin{equation}
-    \label{accel}
-    \frac{d^2 x}{d t^2} = a
-\end{equation}
-you can referrer to the equation later. In equation \ref{accel} we defined acceleration.
+then one possible strict refinement is
+
+$$
+{m_2} : w_4 > w_1 > w_2 > w_3 > w_5,
+$$
+
+and another is
+
+$$
+{m_2} : w_4 > w_1 > w_3 > w_2 > w_5.
+$$
+
+Once all ties have been resolved in this way, we apply the Gale-Shapley algorithm to the resulting strict preference profiles, which produces a stable matching with respect to the chosen refinements.
 
 \end{proof}
 
@@ -74,11 +69,35 @@ you can referrer to the equation later. In equation \ref{accel} we defined accel
 
 Prove by induction that \(n^3 + 2n\) is divisible by \(3\) for all natural numbers. Indicate the structure of your proof clearly.
 
-\begin{proof}[\textbf{Solution.}]
+\begin{proof}[\underline{Proof}]
+\
+
+\underline{Base case.} If $n=1$, then \(n^3+2n = 1^3 + 2\cdot 1 = 3\), which is divisible by $3$. (If one includes $n=0$ as natural, then $0^3 + 2\cdot 0 = 0$ is also divisible by $3$.)
+
+\underline{Inductive hypothesis.} Assume that for some $k \in \mathbb{N}$, the number $k^3 + 2k$ is divisible by $3$, i.e.,
+\[
+k^3 + 2k = 3m \quad \text{for some } m \in \mathbb{Z}.
+\]
+
+\underline{Inductive step.} We must show that $(k+1)^3 + 2(k+1)$ is also divisible by $3$:
+
+\[
+\begin{aligned}
+(k+1)^3+2(k+1)
+&= \big(k^3+3k^2+3k+1\big)+2k+2 \\
+&= \underbrace{(k^3+2k)}_{\text{multiple of }3 \text{ by IH}} \;+\; \underbrace{3k^2+3k+3}_{=3(k^2+k+1)}.
+\end{aligned}
+\]
+
+By the inductive hypothesis, $k^3+2k$ is divisible by $3$, and clearly $3(k^2+k+1)$ is also divisible by $3$.  
+Thus, their sum is divisible by $3$.
+
+\underline{Conclusion.} By the principle of mathematical induction, $n^3 + 2n$ is divisible by $3$ for all natural numbers $n$.
+
 \end{proof}
 
 \item
-Problem 3.
+\textbf{Problem 3.}
 
 Prove by induction that \(\displaystyle\sum_{i=0}^{n} 2^i = 2^{n+1} - 1\) holds for all natural numbers. Indicate the structure of your proof clearly.
 
@@ -88,7 +107,29 @@ For example, for \(n=3\) the above formula gives
 \sum_{i=0}^{3} 2^i = 2^0 + 2^1 + 2^2 + 2^3 = 1 + 2 + 4 + 8 = 15 = 16 - 1 = 2^4 - 1.
 \]
 
-\begin{proof}[\textbf{Solution.}]
+\begin{proof}[\underline{Proof}]
+\
+
+\underline{Base case.} Prove for \(n=0\). LHS = \(\displaystyle\sum_{i=0}^{0} 2^i = 2^0 = 1\). RHS = \(2^{0+1} - 1 = 2^1 - 1 = 1\). LHS = RHS, so the base case holds.
+
+\underline{Inductive hypothesis.} We assume that the \(\displaystyle\sum_{i=0}^{n} 2^i = 2^{n+1} - 1\) is true for some \(n \in \mathbb{N}\).
+
+\underline{Inductive step.} Proof for \(n+1\):
+\(\displaystyle\sum_{i=0}^{n+1} 2^i = 2^{(n+1)+1} - 1\)
+
+\[
+\begin{aligned}
+    \sum_{i=0}^{n+1} 2^i &= 2^0 + 2^1 + 2^2 + \ldots + 2^n + 2^{n+1} \\
+    &= \sum_{i=0}^{n+1} 2^i + 2^{n+1} \\
+    &= (2^{n+1} - 1) + 2^{n+1}\\
+    &= 2(2^{n+1}) - 1 = 2^{n+2} - 1
+\end{aligned}
+\]
+
+We shows that LSH = RHS.
+
+\underline{Conclusion.} \(\displaystyle\sum_{i=0}^{n} 2^i = 2^{n+1} - 1\) holds for all natural numbers \(n \in \mathbb{N}\).
+
 \end{proof}
 
 \item
@@ -98,7 +139,26 @@ Suppose \(x_1, x_2, x_3, x_4 \in \mathbb{R}\), \(x_1 + x_2 = x_3 + x_4 = 1\), an
 
 [Hint: What do you know about the product \((x_1 + x_2)\cdot(x_3 + x_4)\)?]
 
-\begin{proof}[\textbf{Solution.}]
+\begin{proof}
+
+Based on the hint, we know that \((x_1 + x_2)\cdot(x_3 + x_4) = 1\) because \(x_1 + x_2 = 1\) and \(x_3 + x_4 = 1\).
+
+Then we can expand the left-hand side:
+\[
+\begin{aligned}
+(x_1 + x_2)(x_3 + x_4) &= x_1x_3 + x_1x_4 + x_2x_3 + x_2x_4 = 1\\
+&= (x_1x_3 + x_2x_4) + (x_1x_4 + x_2x_3) = 1\\
+\end{aligned}
+\]
+
+Since each \(x_i \ge 0\), we have \(x_1x_4 + x_2x_3 \ge 0\). Hence
+
+\[x_1x_3+x_2x_4 = 1-(x_1x_4+x_2x_3) \le 1,\]
+
+which contradicts the given hypothesis \(x_1x_3+x_2x_4>1\).
+
+\underline{Conclusion.} The assumption that all four numbers are nonnegative is false; at least one of $x_1,x_2,x_3,x_4$ must be negative.
+
 \end{proof}
 
 \item
@@ -119,7 +179,25 @@ Order the following functions from smallest asymptotic running time to greatest.
 \item \(f_j(n) = \frac{n}{f_h(n)}\)
 \end{enumerate}
 
-\begin{proof}[\textbf{Solution.}]
+\begin{proof}
+\
+
+\begin{enumerate}
+    \item \(f_a(n) = n! \Rightarrow f_h(n) = \Theta(n!)\)
+    \item \(f_b(n) = \sqrt{\log{n^{20}}} = \sqrt{20 \cdot log{n}} = \sqrt{20} \cdot \sqrt{log{n}} \Rightarrow \Theta(\sqrt{log{n}})\)
+    \item \(f_c(n) = 2^{n^{3}} \Rightarrow \Theta(2^{n^{3}})\)
+    \item \(f_d(n) = n \cdot \frac{\ln n}{\ln 2} = n \cdot log_{2}{n} \Rightarrow \Theta(n log{n})\)
+    \item \(f_e(n) = n(log{n})^{20} \Rightarrow \Theta(n(log{n})^{20})\)
+    \item \(f_f(n) = n^{log{n}} \Rightarrow \Theta(n^{log{n}})\)
+    \item \(f_g(n) = log{\sqrt{n^{20}}} = log{n^{\frac{20}{2}}} = 10 log n \Rightarrow \Theta(log n)\)
+    \item \(f_h(n) = \floor{\pi e}!  \approx \floor{3.14 * 2.71}! = 8!\), which is a constant function. \(\Rightarrow f_h(n) = \Theta(1)\)
+    \item \(f_i(n) = \Pi^{n}_{i=1} \frac{i+1}{i} = \frac{1+1}{1} \cdot \frac{2+1}{2} \cdot \frac{3+1}{3} \cdots \frac{n+1}{n} = n + 1\) by telescoping. \(\Rightarrow f_i(n) = \Theta(n)\)
+    \item \(f_j(n) = \frac{n}{f_h(n)}\) by \((h.)\) \(f_j(n) = \frac{n}{8!} \Rightarrow \Theta(n)\)
+\end{enumerate}
+
+\[
+h < b < g < j, i < d < e < f < a < c
+\]    
 \end{proof}
 
 \item
@@ -129,29 +207,164 @@ Order the following functions from smallest asymptotic running time to greatest.
 
 \begin{enumerate}
 \item if \(g(n) \in O(f(n))\), then \(f(n) + g(n) \in O(s(n))\)
-\item if \( r(n) \in O(s(n))\), then \(g(n) \in O(f(n))\)
-\item \((\frac{f(n)}{g(n)}) \in O(\frac{s(n)}{r(n)})\)
-\end{enumerate}
 
-\begin{proof}[\textbf{Solution.}]
+\begin{proof}
+
+Since \(f(n) \in O(s(n))\), there exists \(C_1 > 0\) and \(n_1 > 0\) such that for all \(n \ge n_1\), \(f(n) \le C_1 s(n)\).
+Since \(g(n) \in O(f(n))\), there exists \(C_2 > 0\) and \(n_2 > 0\) such that for all \(n \ge n_2\), \(g(n) \le C_2 f(n)\).
+
+\[
+\Rightarrow f(n) + g(n) \le f(n) + C_2 f(n) = (1 + C_2) f(n) \le (1 + C_2) C_1 s(n)
+\]
+
+\underline{Conclustion.} Thus, \(f(n) + g(n) \in O(s(n))\) which the constant is \((1 + C_2) C_1\) and \(n_0 = \max(n_1, n_2)\).
+
 \end{proof}
+
+\item if \(r(n) \in O(s(n))\), then \(g(n) \in O(f(n))\)
+
+\begin{proof}
+
+Take counterexample to pick
+
+\[
+s(n)=1,\qquad r(n)=1,\qquad f(n)=\frac{1}{n},\qquad g(n)=1.
+\]
+
+Then
+
+\begin{itemize}
+\item $f(n)\in O(s(n))$ because $\frac{1}{n}\le 1$ for $n\ge1$.
+\item  $g(n)\in O(r(n))$ because $1\le 1\cdot r(n)$.
+\item  $r(n)\in O(s(n))$ trivially (they are equal).
+\end{itemize}
+
+But $g(n)\notin O(f(n))$: $\frac{g(n)}{f(n)}=\frac{1}{1/n}=n\to\infty$, so there is no constant $C$ with $1\le C\cdot\frac{1}{n}$ for all large $n$. Hence the implication fails.
+
+\end{proof}
+
+\item \((\frac{f(n)}{g(n)}) \in O(\frac{s(n)}{r(n)})\)
+
+\begin{proof}
+
+Take counterexample to pick
+
+$$
+f(n)=1,\qquad s(n)=1,\qquad g(n)=\frac{1}{n^2},\qquad r(n)=\frac{1}{n}.
+$$
+
+
+\begin{itemize}
+\item $f\in O(s)$ since $1\le 1\cdot 1$.
+\item $g\in O(r)$ because $\tfrac{1}{n^2}\le \tfrac{1}{n}$ for all $n\ge1$.
+\item But
+
+\[
+\frac{f(n)}{g(n)}=\frac{1}{1/n^2}=n^2,\qquad
+\frac{s(n)}{r(n)}=\frac{1}{1/n}=n,
+\]
+
+\end{itemize}
+
+and $n^2$ is \textbf{not} $O(n)$. So the claimed relation can fail.
+
+
+\end{proof}
+
+\end{enumerate}
 
 \item
 \textbf{Problem 7.}
 
 Consider a binary counter where the cost of flipping the \(kth\) bit is \(k + 1\) units. That is, flipping the lowest order bit costs \(1\) unit \((0+1)\), the next bit costs \(2\) units \((1+1)\), the next bit costs \(3\) units \((2+1)\), and so on. Use the aggregate method to calculate the amortized cost (via a sequence of \(n\) increments starting from \(0\)) of incrementing the counter!
 
-\begin{proof}[\textbf{Solution.}]
+\begin{proof}
+
+Let the binary counter be incremented \(n\) times from \(0\).  
+For each \(k \geq 0\), denote by \(b_k\) the bit at position \(k\) (with the least significant bit at \(k=0\)).  
+During the \(n\) increments, bit \(b_k\) flips exactly
+\[
+\left\lfloor \frac{n}{2^k} \right\rfloor
+\]
+times.
+
+Hence, the total cost of performing all \(n\) increments is
+\[
+\begin{aligned}
+T(n) &= \sum_{k=0}^{\lfloor \log n \rfloor} (k+1) \cdot \left\lfloor \tfrac{n}{2^k} \right\rfloor \\
+&\leq \sum_{k=0}^{\lfloor \log n \rfloor} (k+1) \cdot \frac{n}{2^k} \\
+&= n \sum_{k=0}^{\lfloor \log n \rfloor} \frac{k+1}{2^k} \\
+&\leq n \sum_{k=0}^{\infty} \frac{k+1}{2^k}.
+\end{aligned}
+\]
+
+The infinite sum evaluates to
+\[
+\sum_{k=0}^{\infty} \frac{k+1}{2^k} = 4,
+\]
+so
+\[
+T(n) \leq 4n.
+\]
+
+On the other hand, each increment costs at least \(1\), so \(T(n) \geq n\).  
+Thus,
+\[
+T(n) = \Theta(n).
+\]
+
+Finally, the amortized cost per increment is
+\[
+\frac{T(n)}{n} = \Theta(1),
+\]
+with an explicit upper bound of \(4\) units per increment.
 \end{proof}
 
 \item
 \textbf{Problem 8. [Think through]}
 
-Provide a list of all non-negative numbers whose value is the same both as a binary and as a decimal number. That is, all numbers n for which \(n_2 = n_10\). Provide a proof that you listed all of them.
+Provide a list of all non-negative numbers whose value is the same both as a binary and as a decimal number. That is, all numbers n for which \(n_2 = n_{10}\). Provide a proof that you listed all of them.
 
 For example, 101 does not fit the above description, as \(101_{2} = 5_{10} \neq 101_{10}\). Also, numbers like 213 are not valid numbers.
 
-\begin{proof}[\textbf{Solution.}]
+\begin{proof}
+
+Let a non-negative integer \(n\) have the same string of digits when written in base \(10\) and in base \(2\). Write that common string as
+
+\[
+n = d_kd_{k-1}\dots d_1d_0,\qquad d_i\in\{0,1\},\ d_k=1.
+\]
+
+where \(d_k\) is the leading digit (so the representation has no leading zeros).
+
+Interpreting this string in base 10 gives:
+
+\[
+n_{10}=\sum_{i=0}^k d_i\,10^i,
+\]
+
+and in base 2 gives
+
+\[
+n_2=\sum_{i=0}^k d_i\,2^i.
+\]
+
+We require \(n_{10}=n_2 \Rightarrow n_{10} - n_2 = 0\), so
+
+\[
+0=\;n_{10}-n_2=\sum_{i=0}^k d_i(10^i-2^i).
+\]
+
+For \(i=0\), the term is \(d_0(10^0-2^0)=d_0(1-1)=0\).
+
+However, for \(i\ge1\), we have \(10^i-2^i>0\) and since \(d_i\in\{0,1\}\), each term \(d_i(10^i-2^i)\ge0\).
+
+Thus, the only way for the RHS to be zero is if each term is zero, which requires \(d_i=0\) for all \(i\ge1\).
+
+In other words, the only valid digit strings are \(d_0\) and \(1d_0\), which correspond to the numbers \(0\) and \(1\).
+
+To sum up, the only non-negative numbers whose value is the same both as a binary and as a decimal number are \(0\) and \(1\).
+
 \end{proof}
 
 
