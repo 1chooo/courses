@@ -1,0 +1,116 @@
+\documentclass[11pt]{article}
+
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+\usepackage{amsthm}
+\usepackage{amssymb, amsmath}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{2025 Fall}
+\rhead{CS-101 HW1}
+\cfoot{\thepage}
+\rfoot{Your Name}
+
+\newcommand{\numpy}{{\tt numpy}}    % tt font for numpy
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\begin{document}
+
+\author{Your Name (Student ID)}
+\title{CS-101 Homework 1}
+\maketitle
+
+\medskip
+
+\begin{enumerate}
+
+\item
+\textbf{Problem 1. [Think through]}
+
+\begin{proof}[Think.]
+
+% ========== Just examples, please delete before submitting
+Use inline equations for simple math $1+1=2$, and centered equations for more involved or important equations
+\begin{equation}
+    a^2 + b^2 = c^2.
+\end{equation}
+
+Some people like to write scalars without boldface $x+y=1$ and vectors or matrices in boldface
+\begin{equation}
+    \mathbf{A} \mathbf{x} = \mathbf{b}.
+\end{equation}
+
+An example of a matrix \LaTeX:
+\begin{equation}
+    \mathbf{A} = \left(
+    \begin{array}{ccc}
+    3 & -1 & 2 \\ 	
+    0 & 1 & 2 \\ 
+    1 & 0 & -1 \\
+\end{array} 
+\right).  
+\end{equation}
+
+With a labeled equation such as the following:
+\begin{equation}
+    \label{accel}
+    \frac{d^2 x}{d t^2} = a
+\end{equation}
+you can referrer to the equation later. In equation \ref{accel} we defined acceleration.
+% ========== END examples
+
+\end{proof}
+
+\item
+\textbf{Problem 2.}
+
+\begin{proof}
+
+% ========== Just examples, please delete before submitting
+Use inline equations for simple math $1+1=2$, and centered equations for more involved or important equations
+\begin{equation}
+    a^2 + b^2 = c^2.
+\end{equation}
+
+Some people like to write scalars without boldface $x+y=1$ and vectors or matrices in boldface
+\begin{equation}
+    \mathbf{A} \mathbf{x} = \mathbf{b}.
+\end{equation}
+
+An example of a matrix \LaTeX:
+\begin{equation}
+    \mathbf{A} = \left(
+    \begin{array}{ccc}
+    3 & -1 & 2 \\ 	
+    0 & 1 & 2 \\ 
+    1 & 0 & -1 \\
+\end{array} 
+\right).  
+\end{equation}
+
+With a labeled equation such as the following:
+\begin{equation}
+    \label{accel}
+    \frac{d^2 x}{d t^2} = a
+\end{equation}
+you can referrer to the equation later. In equation \ref{accel} we defined acceleration.
+% ========== END examples
+
+\end{proof}
+
+
+
+\end{enumerate}
+
+\end{document}
