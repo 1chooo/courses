@@ -1,0 +1,201 @@
+Name: Chunho Lin
+USC NetId: 3226964170
+CSCI 455 PA1
+Fall 2025
+
+----------------------------------------------
+CERTIFY IT'S YOUR WORK
+
+"I certify that the work submitted for this assignment does not
+violate USC's student conduct code.  In particular, the work is my
+own, not a collaboration, and does not involve code created by other
+people or AI software, except for the resources explicitly
+mentioned in the CS 455 Course Syllabus.  And I did not share my
+solution or parts of it with other students in the course."
+
+Initial below to "sign" the above statement:
+
+Chunho Lin (3226964170)
+
+----------------------------------------------
+ACKNOWLEDGE ANY OUTSIDE SOURCES
+
+List here any code you submitted for this assignment that was written
+with significant help of a course staff member, or code used from the
+textbook.  Be specific about what methods or algorithms are involved,
+and what sections of the textbook are involved (if applicable): [you do
+not need to list any of the code that we wrote for the assignment,
+i.e., the contents of the starter files for the assignment]
+
+LINES
+
+```java
+Point2D.Double from = new Point2D.Double(x1, y1);
+Point2D.Double to = new Point2D.Double(x2, y2);
+Line2D.Double segment = new Line2D.Double(from, to);
+```
+
+
+----------------------------------------------
+KNOWN BUGS or LIMITATIONS:
+
+```java
+// Name: Chunho Lin
+// USC NetID: 3226964170
+// CS 455 PA1
+// Fall 2025
+
+import javax.swing.JComponent;
+import java.awt.Point;
+import java.awt.geom.Point2D;
+import java.awt.geom.Line2D;
+import java.awt.Graphics2D;
+
+public class SpiralComponent extends JComponent {
+
+  private Point start;
+  private int initialSegmentLength;
+  private int numberOfSegments;
+
+  public SpiralComponent(Point startPosition, int initialSegmentLength, int numberOfSegments) {
+    this.start = startPosition;
+    this.initialSegmentLength = initialSegmentLength;
+    this.numberOfSegments = numberOfSegments;
+  }
+
+  public void paintComponent(Graphics2D g) {
+    Graphics2D g2 = (Graphics2D) g;
+    double x = start.getX();
+    double y = start.getY();
+    double dx = initialSegmentLength;
+    double dy = 0;
+
+    Line2D.Double segment = new Line2D.Double(x, y, x + dx, y + dy);
+
+    g2.draw(segment);
+  }
+}
+```
+
+can not draw the line it should add `@Override` before `public void paintComponent(Graphics2D g)` also change the `paintComponent` from `public` to `protected`.
+
+```java
+// Name: Chunho Lin
+// USC NetID: 3226964170
+// CS 455 PA1
+// Fall 2025
+
+import javax.swing.JComponent;
+import java.awt.Point;
+import java.awt.Graphics;
+import java.awt.geom.Line2D;
+import java.awt.Graphics2D;
+
+public class SpiralComponent extends JComponent {
+
+  private Point start;
+  private int initialSegmentLength;
+  private int numberOfSegments;
+
+  public SpiralComponent(Point startPosition, int initialSegmentLength, int numberOfSegments) {
+    this.start = startPosition;
+    this.initialSegmentLength = initialSegmentLength;
+    this.numberOfSegments = numberOfSegments;
+  }
+
+  @Override
+  protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    Graphics2D g2 = (Graphics2D) g;
+    double x = start.getX();
+    double y = start.getY();
+    double dx = initialSegmentLength;
+    double dy = 0;
+
+    Line2D.Double segment = new Line2D.Double(x, y, x + dx, y + dy);
+
+    g2.draw(segment);
+  }
+}
+```
+
+----------------------------------------------
+ANY OTHER NOTES FOR THE GRADER:
+
+Take initial segment = 20, number of segments = 10 as an example, the process of drawing the spiral should be:
+
+take the starter point as (0, 0):
+
+- the length of each segment: [20, 20, 40, 40, 60, 60, 80, 80, 100, 100]
+- the starting point of each segment: [(0, 0), (20, 0), (20, -20), (-20, -20), (-20, 20), (40, 20), (40, -40), (-40, -40), (-40, 60), (60, 60)]
+
+we can see that every two segments, the length increase by 20 (the initial segment length), and the direction is in counter-clockwise order: right -> up -> left -> down -> right -> ...
+
+Therefore, I design the `enum Dir` to represent the four directions and their delta (dx, dy), and a method `next()` to return the next direction in counter-clockwise order.
+
+```java
+/**
+ * Enum representing the four directions in the spiral.
+ * Each direction has a delta (dx, dy).
+ */
+private enum Dir {
+  RIGHT(1, 0),
+  UP(0, -1),
+  LEFT(-1, 0),
+  DOWN(0, 1);
+
+  final int dx, dy;
+
+  Dir(int dx, int dy) {
+      this.dx = dx;
+      this.dy = dy;
+  }
+
+  /** Returns the next direction in counter-clockwise order. */
+  Dir next() {
+      return values()[(this.ordinal() + 1) % 4];
+  }
+}
+```
+
+format string
+
+```java
+System.out.println("Segment #" + i + ": Point2D.Double[" + seg.getX1() + ", " + seg.getY1() + "] "
+          + "Point2D.Double[" + seg.getX2() + ", " + seg.getY2() + "]");
+```
+
+```java
+System.out.printf(
+          "Segment #%d: Point2D.Double[%.1f, %.1f] Point2D.Double[%.1f, %.1f]%n",
+          i, seg.getX1(), seg.getY1(), seg.getX2(), seg.getY2());
+```
+
+both are correct, but I think the latter one is more readable.
+
+---
+
+Total score	16/64
+Style	-/16
+Correctness - Prompts for length of initial segment	-/3
+Correctness - Prompts for number of segments to draw	-/3
+Correctness - Draws a spiral	-/10
+Correctness - Edge case: initial segment is 1(a solid square)	-/1
+Correctness - Edge case: initial segment is 2	-/1
+Correctness - Edge case: very large spiral (10, 1000)	-/1
+Correctness - Spiral redrawn correctly on resizing window	-/4
+Testing SGT - Has a non-interactive SGT program testing methods thoroughly	-/2
+Testing SGT - Creates and uses multiple SG objects with different parameters	-/2
+Testing SGT - Tests boundary cases	-/2
+Testing SGT - Complete information printed for each SG object tested	-/3
+SG - Starts spiral correctly (1st segment)	1/1
+SG - Starts spiral correctly (2nd segment)	1/1
+SG - Starts spiral correctly (3rd segment)	1/1
+SG - Starts spiral correctly (4th segment)	1/1
+SG - Starts spiral correctly (5th segment)	1/1
+SG - Large number of segments	3/3
+SG - Unit length of 1	1/1
+SG - Negative starting point	1/1
+SGT - Correctly fails with a buggy SG: segment not connected	2/2
+SGT - Correctly fails with a buggy SG: segment not horizontal/vertical	2/2
+SGT - Correctly fails with a buggy SG: segment not perpendicular	2/2
