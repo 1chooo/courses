@@ -39,88 +39,6 @@ public class SpiralViewer {
    }
 
    /**
-    * Get the window width.
-    * 
-    * @return the window width
-    */
-   public int getWindowWidth() {
-      return windowWidth;
-   }
-
-   /**
-    * Get the window height.
-    * 
-    * @return the window height
-    */
-   public int getWindowHeight() {
-      return windowHeight;
-   }
-
-   /**
-    * Get the unit length of the spiral segments.
-    * 
-    * @return the unit length
-    */
-   public int getUnitLength() {
-      return unitLength;
-   }
-
-   /**
-    * Get the number of segments in the spiral.
-    * 
-    * @return the number of segments
-    */
-   public int getNumSegments() {
-      return numSegments;
-   }
-
-   /**
-    * Sets the window width, ensuring it is positive.
-    * If the provided width is not positive, it defaults to DEFAULT_WINDOW_WIDTH.
-    */
-   private void setWindowWidth(int width) {
-      this.windowWidth = (width > 0) ? width : DEFAULT_WINDOW_WIDTH;
-   }
-
-   /**
-    * Sets the window height, ensuring it is positive.
-    * If the provided height is not positive, it defaults to DEFAULT_WINDOW_HEIGHT.
-    */
-   private void setWindowHeight(int height) {
-      this.windowHeight = (height > 0) ? height : DEFAULT_WINDOW_HEIGHT;
-   }
-
-   /**
-    * Sets the unit length of the spiral segments,
-    * ensuring it is at least MIN_SEGMENT_LENGTH.
-    * If the provided length is less than MIN_SEGMENT_LENGTH,
-    * it prints an error message and
-    * does not change the current unit length.
-    */
-   private void setUnitLength(int length) {
-      if (length >= MIN_SEGMENT_LENGTH) {
-         this.unitLength = length;
-      } else {
-         System.out.println("ERROR: Segment length must be >= " + MIN_SEGMENT_LENGTH);
-      }
-   }
-
-   /**
-    * Sets the number of segments in the spiral,
-    * ensuring it is at least MIN_NUMBER_OF_SEGMENTS.
-    * If the provided number is less than MIN_NUMBER_OF_SEGMENTS,
-    * it prints an error message and
-    * does not change the current number of segments.
-    */
-   private void setNumSegments(int num) {
-      if (num >= MIN_NUMBER_OF_SEGMENTS) {
-         this.numSegments = num;
-      } else {
-         System.out.println("ERROR: Number of segments must be >= " + MIN_NUMBER_OF_SEGMENTS);
-      }
-   }
-
-   /**
     * Prompts the user for spiral configuration parameters:
     * window width, window height, initial segment length, and number of segments.
     * Validates the inputs to ensure they meet the minimum requirements.
@@ -129,15 +47,19 @@ public class SpiralViewer {
       Scanner scanner = new Scanner(System.in);
 
       System.out.print("Enter width: ");
-      setWindowWidth(scanner.nextInt());
+      this.windowWidth = scanner.nextInt();
 
       System.out.print("Enter height: ");
-      setWindowHeight(scanner.nextInt());
+      this.windowHeight = scanner.nextInt();
 
       while (true) {
          System.out.print("Enter length of initial segment: ");
          int length = scanner.nextInt();
-         setUnitLength(length);
+         if (length >= MIN_SEGMENT_LENGTH) {
+            this.unitLength = length;
+         } else {
+            System.out.println("ERROR: Segment length must be >= " + MIN_SEGMENT_LENGTH);
+         }
          if (length >= MIN_SEGMENT_LENGTH)
             break;
       }
@@ -145,7 +67,11 @@ public class SpiralViewer {
       while (true) {
          System.out.print("Enter number of segments: ");
          int num = scanner.nextInt();
-         setNumSegments(num);
+         if (num >= MIN_NUMBER_OF_SEGMENTS) {
+            this.numSegments = num;
+         } else {
+            System.out.println("ERROR: Number of segments must be >= " + MIN_NUMBER_OF_SEGMENTS);
+         }
          if (num >= MIN_NUMBER_OF_SEGMENTS)
             break;
       }

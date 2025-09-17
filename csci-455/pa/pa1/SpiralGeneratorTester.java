@@ -6,6 +6,10 @@
 import java.awt.Point;
 import java.awt.geom.Line2D;
 
+/**
+ * A tester class for the SpiralGenerator.
+ * It runs multiple test cases to verify the correctness of the spiral generation logic.
+ */
 public class SpiralGeneratorTester {
 
    /**
@@ -22,6 +26,8 @@ public class SpiralGeneratorTester {
       tester.testSpiral(new Point(200, 300), 5, 10);
       tester.testSpiral(new Point(0, 0), 3, 8);
       tester.testSpiral(new Point(50, 50), 1, 6);
+      tester.testSpiral(new Point(400, 250), 2, 10);
+      tester.testSpiral(new Point(400, 250), 10, 1000);
    }
 
    /**
@@ -45,12 +51,10 @@ public class SpiralGeneratorTester {
       for (int i = 1; i <= numSegments; i++) {
          Line2D seg = spiral.nextSegment();
 
-         System.out.printf(
-               "Segment #%d: Point2D.Double[%.1f, %.1f] Point2D.Double[%.1f, %.1f]%n",
-               i, seg.getX1(), seg.getY1(), seg.getX2(), seg.getY2());
+         System.out.println("Segment #" + i + ": " + seg.getP1() + " " + seg.getP2());
 
          if (!isHorizontal(seg) && !isVertical(seg)) {
-            System.out.println("FAILED: segment is not horizontal or vertical. Skipping pair tests.");
+            System.out.println("FAILED: segment is not horizontal or vertical.  Skipping pair tests.");
          } else if (prevSegment != null) {
             if (!isConnected(prevSegment, seg)) {
                System.out.println("FAILED: last two segments are not connected");

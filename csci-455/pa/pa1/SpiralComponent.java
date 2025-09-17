@@ -52,9 +52,10 @@ public class SpiralComponent extends JComponent {
    public void paintComponent(Graphics g) {
       Graphics2D g2 = (Graphics2D) g;
 
-      // Draw all the pre-generated segments
-      for (Line2D segment : segments) {
+      for (int i = 0; i < segments.size(); i++) {
+         Line2D segment = segments.get(i);
          g2.draw(segment);
+         System.out.println("Drawing segment " + i + " from " + segment.getP1() + " to " + segment.getP2());
       }
    }
 }
