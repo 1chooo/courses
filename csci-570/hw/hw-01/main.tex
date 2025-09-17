@@ -10,13 +10,6 @@
 \usepackage{amssymb, amsmath}
 \usepackage{fancyhdr}
 
-\pagestyle{fancy}
-\fancyhf{}
-\lhead{2025 Fall}
-\rhead{CSCI 570 HW1}
-\cfoot{\thepage}
-\rfoot{Chunho Lin}
-
 \newcommand{\numpy}{{\tt numpy}}    % tt font for numpy
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
 \newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
@@ -27,7 +20,7 @@
 
 \begin{document}
 
-\author{Chunho Lin (3226964170)}
+\author{Chunho Lin* (3226964170)}
 \title{CSCI-570 Homework 1}
 \maketitle
 
@@ -35,12 +28,15 @@
 
 \begin{enumerate}
 
-\item
-\textbf{Problem 1. [Think through]}
+\item \textbf{Problem 1. [Think through]}
 
 As presented in the lecture, the Gale-Shapley algorithm requires that the preference orders of all men and women do not have any ties. How could we adapt the algorithm for the scenario where ties are allowed?
 
 [As an example of a tie, imagine that there are 5 men and 5 women, and $m_2$'s preference order is $w_4$, $w_1$, $w_2$ tied with $w_3$, $w_5$. Thus, if $m_2$ cannot be married to neither $w_4$ nor $w_1$, but can do "better" than $w_5$, he is indifferent whether he is married to $w_2$ or $w_3$.]
+
+\begin{flushright}
+\textbf{[2 points]}
+\end{flushright}
 
 \begin{proof}[Think.]
 
@@ -70,10 +66,15 @@ Once all ties have been resolved in this way, we apply the Gale-Shapley algorith
 
 \end{proof}
 
-\item
-\textbf{Problem 2.}
+\newpage
+
+\item \textbf{Problem 2.}
 
 Prove by induction that \(n^3 + 2n\) is divisible by \(3\) for all natural numbers. Indicate the structure of your proof clearly.
+
+\begin{flushright}
+\textbf{[4 points]}
+\end{flushright}
 
 \begin{proof}[\underline{Proof}]
 \
@@ -102,8 +103,7 @@ Thus, their sum is divisible by $3$.
 
 \end{proof}
 
-\item
-\textbf{Problem 3.}
+\item \textbf{Problem 3.}
 
 Prove by induction that \(\displaystyle\sum_{i=0}^{n} 2^i = 2^{n+1} - 1\) holds for all natural numbers. Indicate the structure of your proof clearly.
 
@@ -112,6 +112,10 @@ For example, for \(n=3\) the above formula gives
 \[
 \sum_{i=0}^{3} 2^i = 2^0 + 2^1 + 2^2 + 2^3 = 1 + 2 + 4 + 8 = 15 = 16 - 1 = 2^4 - 1.
 \]
+
+\begin{flushright}
+\textbf{[4 points]}
+\end{flushright}
 
 \begin{proof}[\underline{Proof}]
 \
@@ -138,14 +142,17 @@ We shows that LSH = RHS.
 
 \end{proof}
 
-\item
-\textbf{Problem 4.}
+\item \textbf{Problem 4.}
 
 Suppose \(x_1, x_2, x_3, x_4 \in \mathbb{R}\), \(x_1 + x_2 = x_3 + x_4 = 1\), and \(x_1x_3 + x_2x_4 >1\). Use proof by contradiction to show that at least one of \(x_1, x_2, x_3, x_4\) is negative.
 
 [Hint: What do you know about the product \((x_1 + x_2)\cdot(x_3 + x_4)\)?]
 
-\begin{proof}
+\begin{flushright}
+\textbf{[4 points]}
+\end{flushright}
+
+\begin{proof}[\underline{Proof}]
 
 Based on the hint, we know that \((x_1 + x_2)\cdot(x_3 + x_4) = 1\) because \(x_1 + x_2 = 1\) and \(x_3 + x_4 = 1\).
 
@@ -167,8 +174,9 @@ which contradicts the given hypothesis \(x_1x_3+x_2x_4>1\).
 
 \end{proof}
 
-\item
-\textbf{Problem 5.}
+\newpage
+
+\item \textbf{Problem 5.}
 
 Order the following functions from smallest asymptotic running time to greatest. Additionally, identify all pairs of functions \(f_i\) and \(f_j\) where \(f_i(n) = \Theta(f_j (n))\), or explicitly state that none exist. Explain your answers.
 
@@ -185,7 +193,11 @@ Order the following functions from smallest asymptotic running time to greatest.
 \item \(f_j(n) = \frac{n}{f_h(n)}\)
 \end{enumerate}
 
-\begin{proof}
+\begin{flushright}
+\textbf{[10 points]}
+\end{flushright}
+
+\begin{proof}[\underline{Proof}]
 \
 
 \begin{enumerate}
@@ -206,15 +218,20 @@ h < b < g < j, i < d < e < f < a < c
 \]    
 \end{proof}
 
-\item
-\textbf{Problem 6.}
+\newpage
+
+\item \textbf{Problem 6.}
 
 \(f(n) \in O(s(n))\), and \(g(n) \in O(r(n))\). Prove or disprove (by giving a counter-example) the following claims:
+
+\begin{flushright}
+\textbf{[8 points]}
+\end{flushright}
 
 \begin{enumerate}
 \item if \(g(n) \in O(f(n))\), then \(f(n) + g(n) \in O(s(n))\)
 
-\begin{proof}
+\begin{proof}[\underline{Proof}]
 
 Since \(f(n) \in O(s(n))\), there exists \(C_1 > 0\) and \(n_1 > 0\) such that for all \(n \ge n_1\), \(f(n) \le C_1 s(n)\).
 Since \(g(n) \in O(f(n))\), there exists \(C_2 > 0\) and \(n_2 > 0\) such that for all \(n \ge n_2\), \(g(n) \le C_2 f(n)\).
@@ -229,7 +246,7 @@ Since \(g(n) \in O(f(n))\), there exists \(C_2 > 0\) and \(n_2 > 0\) such that f
 
 \item if \(r(n) \in O(s(n))\), then \(g(n) \in O(f(n))\)
 
-\begin{proof}
+\begin{proof}[\underline{Proof}]
 
 Take counterexample to pick
 
@@ -251,7 +268,7 @@ But $g(n)\notin O(f(n))$: $\frac{g(n)}{f(n)}=\frac{1}{1/n}=n\to\infty$, so there
 
 \item \((\frac{f(n)}{g(n)}) \in O(\frac{s(n)}{r(n)})\)
 
-\begin{proof}
+\begin{proof}[\underline{Proof}]
 
 Take counterexample to pick
 
@@ -279,12 +296,15 @@ and $n^2$ is \textbf{not} $O(n)$. So the claimed relation can fail.
 
 \end{enumerate}
 
-\item
-\textbf{Problem 7.}
+\item \textbf{Problem 7.}
 
 Consider a binary counter where the cost of flipping the \(kth\) bit is \(k + 1\) units. That is, flipping the lowest order bit costs \(1\) unit \((0+1)\), the next bit costs \(2\) units \((1+1)\), the next bit costs \(3\) units \((2+1)\), and so on. Use the aggregate method to calculate the amortized cost (via a sequence of \(n\) increments starting from \(0\)) of incrementing the counter!
 
-\begin{proof}
+\begin{flushright}
+\textbf{[4 points]}
+\end{flushright}
+
+\begin{proof}[\underline{Proof}]
 
 Let the binary counter be incremented \(n\) times from \(0\).  
 For each \(k \geq 0\), denote by \(b_k\) the bit at position \(k\) (with the least significant bit at \(k=0\)).  
@@ -326,14 +346,19 @@ Finally, the amortized cost per increment is
 with an explicit upper bound of \(4\) units per increment.
 \end{proof}
 
-\item
-\textbf{Problem 8. [Think through]}
+\newpage
+
+\item \textbf{Problem 8. [Think through]}
 
 Provide a list of all non-negative numbers whose value is the same both as a binary and as a decimal number. That is, all numbers n for which \(n_2 = n_{10}\). Provide a proof that you listed all of them.
 
 For example, 101 does not fit the above description, as \(101_{2} = 5_{10} \neq 101_{10}\). Also, numbers like 213 are not valid numbers.
 
-\begin{proof}
+\begin{flushright}
+\textbf{[4 points]}
+\end{flushright}
+
+\begin{proof}[\underline{Proof}]
 
 Let a non-negative integer \(n\) have the same string of digits when written in base \(10\) and in base \(2\). Write that common string as
 
