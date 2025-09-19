@@ -1,0 +1,334 @@
+Name: Chunho Lin (Scribe)
+USC NetID: 3226964170
+CSCI 455 Fall 2025
+
+Name: Junhan Zhang (Driver)
+USC NetID: 9250642107
+CSCI 455 Fall 2025
+Lab 4
+
+Note: On-campus students can put their answers to the lab questions in this file, or use a piece of paper they can show to their lab TA.  DEN students will need to put their answers in this README, so they will get submitted.
+
+## Exercise 1 (1 checkoff point)
+
+Question 1.1 Why can doing this save you time in the long run, over implementing the whole class at once?
+
+By implementing the (1) constructor and (2) accessor method or print method, we could split the work into the smaller parts. This could help us to find the bugs in the code more easily and quickly. Also, we could test the smaller parts of the code to make sure they work correctly before implementing the whole class.
+
+As a result, we could save time in the long run by avoiding the need to debug the entire class at once.
+
+```bash
+java NumsTester < nums.in
+
+Value of empty nums: ()
+Min value of empty nums: 0
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: ()
+--------------------------------------------
+Value of nums read in: (3 -7 10 17 9 -17 17 21 18 7)
+Min value of nums: 0
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: (3 -7 10 17 9 -17 17 21 18 7)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -20: ()
+Original list of nums: (3 -7 10 17 9 -17 17 21 18 7)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -17: ()
+Original list of nums: (3 -7 10 17 9 -17 17 21 18 7)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than 21: ()
+Original list of nums: (3 -7 10 17 9 -17 17 21 18 7)
+--------------------------------------------
+```
+
+
+## Exercise 2 (1 checkoff point)
+
+Question 2.1 Write down the expected results of calling minVal on each of the Nums objects that would result from the input in: nums.in, test1.in, and test2.in.
+
+- `nums.in`: -17
+
+```plaintext
+3 -7 10 17 9 -17  17 21 18 7
+```
+
+```bash
+⚡ java NumsTester < nums.in
+Value of empty nums: ()
+Min value of empty nums: 2147483647
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: ()
+--------------------------------------------
+Value of nums read in: (3 -7 10 17 9 -17 17 21 18 7)
+Min value of nums: -17
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: (3 -7 10 17 9 -17 17 21 18 7)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -20: ()
+Original list of nums: (3 -7 10 17 9 -17 17 21 18 7)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -17: ()
+Original list of nums: (3 -7 10 17 9 -17 17 21 18 7)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than 21: ()
+Original list of nums: (3 -7 10 17 9 -17 17 21 18 7)
+--------------------------------------------
+```
+
+- `test1.in`: 5
+```plaintext
+5
+```
+
+```bash
+⚡ java NumsTester < test1.in 
+Value of empty nums: ()
+Min value of empty nums: 2147483647
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: ()
+--------------------------------------------
+Value of nums read in: (5)
+Min value of nums: 5
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: (5)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -20: ()
+Original list of nums: (5)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -17: ()
+Original list of nums: (5)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than 21: ()
+Original list of nums: (5)
+--------------------------------------------
+```
+
+- `test2.in`: 300
+
+```bash
+2147483647 300 4000
+```
+
+```bash
+⚡ java NumsTester < test2.in 
+Value of empty nums: ()
+Min value of empty nums: 2147483647
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: ()
+--------------------------------------------
+Value of nums read in: (2147483647 300 4000)
+Min value of nums: 300
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: (2147483647 300 4000)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -20: ()
+Original list of nums: (2147483647 300 4000)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -17: ()
+Original list of nums: (2147483647 300 4000)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than 21: ()
+Original list of nums: (2147483647 300 4000)
+--------------------------------------------
+```
+
+
+Question 2.2 From just looking at the results of a call to minVal, you can't always tell whether the Nums object you called it on was empty or non-empty. Write down two examples of non-empty Nums objects such that they return the same value as for an empty Nums object.
+
+- Example 0: ()
+- Example 1: (2147483647)
+- Example 2: (2147483647 300 4000)
+
+2^32 - 1 = 2147483647
+
+
+This is because the minVal method returns Integer.MAX_VALUE (2147483647) when the Nums object is empty. Therefore, if a non-empty Nums object contains only the value 2147483647, or if it contains multiple values but one of them is 2147483647 and all others even are smaller than 2147483647, the minVal method will still return the same value as for an empty Nums object.
+
+## Exercise 3 (1 checkoff point)
+
+Question 3.1 Write down the expected results of the hard-coded tests of valuesGT from NumsTester when run on: nums.in, test1.in, and test2.in.
+
+```java
+testFilter(nums, 10);
+testFilter(nums, -20);
+testFilter(nums, -17);
+testFilter(nums, 21);
+```
+
+- `nums.in`: 17 17 21 18
+
+```plaintext
+3 -7 10 17 9 -17  17 21 18 7
+```
+
+- `test1.in`: 
+
+```plaintext
+5
+```
+
+- `test2.in`: 2147483647 300 4000
+
+```plaintext
+2147483647 300 4000
+```
+
+Question 3.2 Create an additional test case in a new file test3.in that explicitly tests a boundary case of valuesGT when run with the hard-coded tests of valuesGT from NumsTester. Add the expected results of of this new test case to the list of expected results you gave in Question 3.1
+
+
+```
+-30 -40 -50
+```
+
+```bash
+⚡ java NumsTester           
+Value of empty nums: ()
+Min value of empty nums: 2147483647
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: ()
+--------------------------------------------
+1 2 3 a
+Value of nums read in: (1 2 3)
+Min value of nums: 1
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: (1 2 3)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -20: (1 2 3)
+Original list of nums: (1 2 3)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -17: (1 2 3)
+Original list of nums: (1 2 3)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than 21: ()
+Original list of nums: (1 2 3)
+--------------------------------------------
+```
+
+## Exercise 4 (1 checkoff point)
+
+Question 4.1 Give two examples of other possible things you could type in to cause this program to terminate (i.e., besides Ctrl-d). Try each of these on your program.
+
+
+1. `1 2 3 4 3.14`
+
+```bash
+Value of empty nums: ()
+Min value of empty nums: 2147483647
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: ()
+--------------------------------------------
+1 2 3 4 3.14
+Value of nums read in: (1 2 3 4)
+Min value of nums: 1
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: (1 2 3 4)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -20: (1 2 3 4)
+Original list of nums: (1 2 3 4)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -17: (1 2 3 4)
+Original list of nums: (1 2 3 4)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than 21: ()
+Original list of nums: (1 2 3 4)
+--------------------------------------------
+```
+
+1. `1 2 3 a`
+
+```bash
+⚡ java NumsTester
+Value of empty nums: ()
+Min value of empty nums: 2147483647
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: ()
+--------------------------------------------
+1 2 3 a
+Value of nums read in: (1 2 3)
+Min value of nums: 1
+------------ testing valuesGT --------------
+Values greater than 10: ()
+Original list of nums: (1 2 3)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -20: (1 2 3)
+Original list of nums: (1 2 3)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than -17: (1 2 3)
+Original list of nums: (1 2 3)
+--------------------------------------------
+------------ testing valuesGT --------------
+Values greater than 21: ()
+Original list of nums: (1 2 3)
+--------------------------------------------
+```
+
+Question 4.2 Write down an equivalent statement with more parentheses to show the grouping (i.e., associativity) of the two dot operators, that is, to show what part of the expression gets evaluated first. Hint: if you think about it, only one grouping makes sense.
+
+```java
+(nums.valuesGT(threshold)).printVals();
+```
+
+Question 4.3 What is the type of the innermost sub-expression you put parentheses around (i.e., the one that gets evaluated first)?
+
+`Nums`
+
+Question 4.4 Write a sequence of statements equivalent to the whole statement in question, but that uses a local variable to store intermediate results.
+
+```java
+Nums filteredNums = nums.valuesGT(threshold);
+filteredNums.printVals();
+```
+
+Question 4.5 What's the disadvantage of using an ArrayList compared to an array in the Nums class?
+
+`ArrayList` has more overhead than a simple array, which can lead to slower performance for certain operations. For example, accessing an element in an array is generally faster than accessing an element in an `ArrayList`, because the latter involves additional method calls and checks.
+
+Question 4.6 What's the advantage of using an ArrayList compared to an array in the Nums class?
+
+1. the size of `ArrayList` is dynamic, which means it can grow and shrink as needed, while the size of an array is fixed once it is created. This can lead to inefficiencies in memory usage if the size of the data set is not known in advance.
+2. `add()` method of `ArrayList` is more convenient to use than manually resizing an array and copying elements over when adding new elements.
+
+Question 4.7 Many programs involve arrays (or equivalently, array lists), but you don't always need to store all the values when you are processing a sequence of numbers. For each of the following tasks related to this lab say whether an array is necessary to complete the task, and briefly describe why or why not. We're interested in this because we could use a lot less memory if we don't have to save all the numbers to process large data sets.
+To put it another way, do you need to save all the numbers to do the task? (why or why not)
+
+1. Reading in a sequence of numbers and printing them all out. `Yes`
+1. Reading in a sequence of numbers and printing out the minimum value in the sequence. `No`
+1. Reading in a sequence of numbers, printing them out, and printing out the minimum value in the sequence. `Yes`
+1. Reading in a threshold value and a sequence of numbers, and printing out the numbers from the sequence that are above the threshold value. `No`
+1. Same task, as the previous one, but with the specification that you you have to read in the sequence of numbers before you read in the threshold. `Yes`
+1. Reading in a sequence of numbers, and generating the exact output produced by NumsTester.java about that data. `Yes`
+
+
