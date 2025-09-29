@@ -1,0 +1,31 @@
+Name: Chunho Lin
+USC NetId: 3226964170
+CSCI 455 Fall 2025
+Lab 5
+
+----------------------------------------------
+Answers for Exercise 1:
+
+
+1. bookshelf: `[1, 3, 4, 8, 11, 14, 15, 18]` operation: `putHeight(13)`
+    1. `putHeight(13)` must keep the bookshelf sorted.
+    2. 13 should go between 11 and 14.
+    3. That’s at index 5 (0-based).
+    4. move books from the end until we can insert 13, then put them back.
+    5. `RemoveLast(18)`, `RemoveLast(15)`, `RemoveLast(14)` -> 3 ops
+    6. `AddLast(13)` -> 1 op
+    7. `AddLast(14)`, `AddLast(15)`, `AddLast(18)` -> 3 ops
+    8. Answer: 7 mutator calls
+
+    bookshelf after operation: `[1, 3, 4, 8, 11, 13, 14, 15, 18]`
+2. bookshelf: `[1, 3, 4, 8, 11, 14, 15, 18]`
+operation: `pickPos(2)`
+    1. `pickPos(2)` removes the book at index 2 (0-based).
+    2. The book at index 2 is 4.
+    3. Remove the book to index 2. then use `addFront` to put back the other books.
+    4. `RemoveFront(1)`, `AddLast(3)`, `AddLast(4)` -> 3 ops
+    5. `AddFront(1)`, `AddFront(3)` -> 2 ops
+    6. Answer: 5 mutator calls
+
+    bookshelf after operation: `[1, 3, 8, 11, 14, 15, 18]`
+
