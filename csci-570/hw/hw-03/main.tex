@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+\usepackage{amsthm}
+\usepackage{amssymb, amsmath}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\usetikzlibrary{trees}
+
+\newcommand{\numpy}{{\tt numpy}}    % tt font for numpy
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\author{Chunho Lin* (3226964170)\\chunholi@usc.edu}
+\title{CSCI-570 Homework 3}
+\date{Due Date: Tuesday, October 7th, 11:59pm}
+
+\begin{document}
+
+\maketitle
+
+\medskip
+
+\begin{enumerate}
+
+\item \textbf{Problem 1.}
+
+The recurrence \(T (n) = 12 \cdot T (\frac{n}{3}) + n^2\) describes the running time of an algorithm ALG. A competing algorithm \(\text{ALG}'\) has a running time of \(T '(n) = a \cdot T '(n/9) + n^2\). What is the range of the values of \(a\) such that \(\text{ALG}'\) is asymptotically faster than ALG?
+
+\begin{flushright}
+\textbf{[6 points]}
+\end{flushright}
+
+\begin{proof}[\underline{Proof}]
+
+
+\end{proof}
+
+% \newpage
+
+\item \textbf{Problem 2. [Think through]}
+
+What is the runtime of an algorithm that solves problems of size n by recursively solving two subproblems of size \(n - 1\) and then combines the solutions in constant time?
+
+\begin{flushright}
+\textbf{[3 points]}
+\end{flushright}
+
+\begin{proof}[\underline{Think through}]
+
+\end{proof}
+
+
+\item \textbf{Problem 3.}
+
+Consider a divide and conquer algorithm which solves problems by dividing them into five subproblems, each of size \(\frac{n}{2}\), recursively solving each subproblem, and then combining the solutions in linear time. Write down the runtime recurrence relation of this algorithm, then calculate its runtime by unrolling its recursion tree and using the runtime recurrence.  (Providing the runtime based on applying the Master Theorem will not be accepted as an answer.)
+
+\begin{flushright}
+\textbf{[4 points]}
+\end{flushright}
+
+\begin{proof}[\underline{Proof}]
+
+
+\end{proof}
+
+
+\item \textbf{Problem 4.}
+
+Given an array \(A\) of \(n\) positive integers (with repetition allowed), determine if the array has a majority element, that is, a number that occurs in the array more than \(\frac{n}{2}\) times. Provide a \(O(n \cdot log n)\) runtime divide and conquer algorithm that returns the value of the majority element if there is one, and -1 if there isn't.
+
+Examples:\\
+Input: \(A = [1, 2, 9, 2, 2, 7, 6, 2, 2]\), Output: 2;\\
+Input: \(A = [1, 2, 3, 6, 5, 6, 1, 8, 1]\), Output: -1.
+
+\begin{flushright}
+\textbf{[10 points]}
+\end{flushright}
+
+\begin{proof}[\underline{Proof}]
+
+
+\end{proof}
+
+\item \textbf{Problem 5.}
+
+Consider a two-dimensional array \(A\) of size \(n \times n\) filled with integers. In the array each row is sorted in ascending order and each column is also sorted in ascending order. Our goal is to determine if a given value \(k\) exists in the array. Design a divide-and-conquer algorithm that solves this problem based on
+checking "the middle element" of the array (i.e. \("A[n/2][n/2]"\)) and dividing the problem based on its value. What is the runtime of your algorithm? (It should be faster than \(O(n^2)\).)
+
+\begin{flushright}
+\textbf{[8 points]}
+\end{flushright}
+
+\begin{proof}[\underline{Proof}]
+
+
+\end{proof}
+
+\end{enumerate}
+
+\end{document}
