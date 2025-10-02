@@ -150,33 +150,42 @@ public class BookshelfKeeper {
       if (bookShelf.size() == 0) {
          bookShelf.addLast(height);
          lastOperationCount = 1;
+         totalOperations += lastOperationCount;
+         assert isValidBookshelfKeeper();
+         return lastOperationCount;
       } else {
          int position = 0;
          while (position < bookShelf.size() && bookShelf.getHeight(position) < height) {
             position++;
          }
 
-         if (position < bookShelf.size() / 2) {
+         int currentSize = bookShelf.size();
+
+         if (position < currentSize - position) {
             for (int i = 0; i < position; i++) {
                int moved = bookShelf.removeFront();
                tempPile.addLast(moved);
                lastOperationCount++;
             }
+
             bookShelf.addFront(height);
             lastOperationCount++;
+
             while (tempPile.size() > 0) {
                int movedBack = tempPile.removeLast();
                bookShelf.addFront(movedBack);
                lastOperationCount++;
             }
          } else {
-            for (int i = bookShelf.size() - 1; i >= position; i--) {
+            for (int i = 0; i < currentSize - position; i++) {
                int moved = bookShelf.removeLast();
                tempPile.addLast(moved);
                lastOperationCount++;
             }
+
             bookShelf.addLast(height);
             lastOperationCount++;
+
             while (tempPile.size() > 0) {
                int movedBack = tempPile.removeLast();
                bookShelf.addLast(movedBack);
@@ -224,7 +233,6 @@ public class BookshelfKeeper {
    public String toString() {
       assert isValidBookshelfKeeper();
       return bookShelf.toString() + " " + lastOperationCount + " " + totalOperations;
-
    }
 
    /**
@@ -232,13 +240,20 @@ public class BookshelfKeeper {
     * (See representation invariant comment for details.)
     */
    private boolean isValidBookshelfKeeper() {
-      if (!bookShelf.isSorted() ||
-            !(totalOperations >= 0) ||
-            !(lastOperationCount >= 0)) {
+      if (bookShelf == null ||
+            !bookShelf.isSorted()) {
          return false;
-      } else {
-         return true;
       }
+
+      if (!(totalOperations >= 0) || !(lastOperationCount >= 0)) {
+         return false;
+      }
+      for (int i = 0; i < bookShelf.size(); i++) {
+         if (bookShelf.getHeight(i) <= 0) {
+            return false;
+         }
+      }
+      return true;
    }
 
    // add any other private methods here
