@@ -38,8 +38,31 @@ KNOWN BUGS or LIMITATIONS:
 ANY OTHER NOTES FOR THE GRADER:
 
 
+Correctness Error Checking - pick operation contain negative index 0/1
 
+before:
 
+```java
+if (pos < 0) {
+    System.out.println("ERROR: Height of a book must be positive.");
+    System.out.println("Exiting Program.");
+    break;
+} else if (pos >= bk.getNumBooks()) {
+    System.out.println("ERROR: Entered pick operation is invalid on this
+    shelf.");
+    System.out.println("Exiting Program.");
+    break;
+}
+```
 
+after:
 
+```java
+if (pos < 0 || pos >= bk.getNumBooks()) {
+    System.out.println("ERROR: Entered pick operation is invalid on this shelf.");
+    System.out.println("Exiting Program.");
+    break;
+}
+```
 
+Correctness BookshelfKeeper - performs pickPos/putHeight operations on uninitialized Bookshelf	0/3

@@ -1,36 +1,36 @@
 // Name: Chunho Lin
 // USC NetID: 3226964170
-// CSCI455 Lab 5
+// CSCI455 PA2
 // Fall 2025
 
 import java.util.ArrayList;
 
 /**
  * Class Bookshelf
- * Implements idea of arranging books into a bookshelf.
- * Books on a bookshelf can only be accessed in a specific way so books don't
- * fall down;`
- * You can add or remove a book only when it’s on one of the ends of the shelf.
- * However, you can look at any book on a shelf by giving its location (starting
- * at 0).
- * Books are identified only by their height; two books of the same height can
- * be
- * thought of as two copies of the same book.
+ * Implements idea of arranging books into a bookshelf. Books on a bookshelf
+ * can only be accessed in a specific way so books don't fall down; You can add
+ * or remove a book only when it's on one of the ends of the shelf. However, you
+ * can look at any book on
+ * a shelf by giving its location (starting at 0). Books are identified only by
+ * their height;
+ * two books of the same height can be thought of as two copies of the same
+ * book.
  */
-
 public class Bookshelf {
 
    /**
     * Representation invariant:
     * 
-    * books != null && 
+    * books != null &&
     * for all i, 0 <= i < books.size(), books.get(i) != null && books.get(i) > 0
     * 
     * That is, the ArrayList books is not null, and all books in the collection
     * have positive heights (no null or non-positive heights allowed).
     */
 
-   // <add instance variables here>
+   /*
+    * books is the list of heights of books on this Bookshelf.
+    */
    private ArrayList<Integer> books;
 
    /**
@@ -45,8 +45,12 @@ public class Bookshelf {
     * Creates a Bookshelf with the arrangement specified in pileOfBooks. Example
     * values: [20, 1, 9].
     * 
+    * 
     * PRE: pileOfBooks contains an array list of 0 or more positive numbers
     * representing the height of each book.
+    * 
+    * @param pileOfBooks an ArrayList of Integer heights of books to be placed on
+    *                    the Bookshelf (in the given order)
     */
    public Bookshelf(ArrayList<Integer> pileOfBooks) {
       assert pileOfBooks != null;
@@ -62,6 +66,8 @@ public class Bookshelf {
     * will end up at position 0.
     * 
     * PRE: height > 0 (height of book is always positive)
+    * 
+    * @param height the height of the book to be added
     */
    public void addFront(int height) {
       assert height > 0;
@@ -73,6 +79,8 @@ public class Bookshelf {
     * Inserts book with specified height at the end of the Bookshelf.
     * 
     * PRE: height > 0 (height of book is always positive)
+    *
+    * @param height the height of the book to be added
     */
    public void addLast(int height) {
       assert height > 0;
@@ -110,6 +118,8 @@ public class Bookshelf {
     * Gets the height of the book at the given position.
     * 
     * PRE: 0 <= position < this.size()
+    * 
+    * @param position the position of the book whose height is being requested
     */
    public int getHeight(int position) {
       assert 0 <= position && position < size();

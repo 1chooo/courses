@@ -1,6 +1,6 @@
 // Name: Chunho Lin
 // USC NetID: 3226964170
-// CSCI455 Lab 5
+// CSCI455 PA2
 // Fall 2025
 
 import java.util.ArrayList;
